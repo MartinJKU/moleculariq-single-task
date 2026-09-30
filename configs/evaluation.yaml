@@ -1,0 +1,27 @@
+# Official benchmark (whole test set, 3 attempts per item): the base model and the three models.
+#   python -m miqgrpo.evaluate all --config configs/evaluation.yaml
+
+task: moleculariq_pass_at_k
+backend: vllm  # harness's vLLM backend, via miqgrpo.lm_eval_compat
+dtype: bfloat16
+gpu_memory_utilization: 0.3  # speed only
+gen_kwargs:  # max_gen_toks: the task's 32768 fills the context window; sampling = vLLM defaults, as in the official runs
+  max_gen_toks: 28672
+  temperature: 1.0
+  top_p: 1.0
+  top_k: 0
+  repetition_penalty: 1.0
+
+runs:
+  - run_id: miq-eval-base
+    label: base
+    model: Qwen/Qwen2.5-0.5B-Instruct
+  - run_id: miq-eval-count
+    label: count
+    experiment: count
+  - run_id: miq-eval-index
+    label: index
+    experiment: index
+  - run_id: miq-eval-constraint_generation
+    label: constraint_generation
+    experiment: constraint_generation

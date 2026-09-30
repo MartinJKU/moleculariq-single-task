@@ -1,0 +1,14 @@
+data/
+runs/
+results/
+third_party/
+.venv/
+assets_manifest.json
+logs/*
+!logs/.gitkeep
+
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+.DS_Store

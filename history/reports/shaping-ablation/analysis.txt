@@ -1,0 +1,76 @@
+SHAPING ABLATION
+Single variable: rewards.format_weight 0.1 -> 0.0.
+
+Benchmark-informed: this ablation was motivated by a main-study benchmark
+result (the index specialist got worse at index attribution). Its numbers
+are therefore not a clean held-out result and are reported separately.
+
+Own-task avg_accuracy:
+  family                        base    shaped  unshaped
+  Counting                     2.78%     3.69%     3.74%
+  Index attribution            0.84%     0.19%     2.85%
+  Constrained generation       2.40%     4.03%     3.93%
+
+Effect of removing the shaping reward (unshaped - shaped), paired, 95% CI:
+  Counting specialist
+    Counting                  +0.06 pp  [ -0.57,  +0.69]  not significant  <- own task
+    Index attribution         -0.50 pp  [ -0.80,  -0.21]  significant
+    Constrained generation    +0.32 pp  [ -0.17,  +0.81]  not significant
+  Index attribution specialist
+    Counting                  -0.80 pp  [ -1.43,  -0.19]  significant
+    Index attribution         +2.66 pp  [ +1.99,  +3.39]  significant  <- own task
+    Constrained generation    -0.11 pp  [ -0.55,  +0.34]  not significant
+  Constrained generation specialist
+    Counting                  -0.80 pp  [ -1.35,  -0.24]  significant
+    Index attribution         -0.73 pp  [ -1.05,  -0.44]  significant
+    Constrained generation    -0.11 pp  [ -0.28,  +0.04]  not significant  <- own task
+
+Training dynamics, first vs last 10 logged steps:
+  Counting                 shaped    correctness 0.066->0.083  answer tags 0.317->0.992  reward std 0.238->0.257
+  Counting                 unshaped  correctness 0.070->0.095  answer tags 0.107->0.028  reward std 0.241->0.273
+  Index attribution        shaped    correctness 0.009->0.002  answer tags 0.254->0.997  reward std 0.067->0.019
+  Index attribution        unshaped  correctness 0.013->0.138  answer tags 0.105->0.865  reward std 0.076->0.293
+  Constrained generation   shaped    correctness 0.023->0.021  answer tags 0.104->0.996  reward std 0.121->0.070
+  Constrained generation   unshaped  correctness 0.022->0.024  answer tags 0.047->0.003  reward std 0.110->0.078
+
+
+WHERE THE OWN-TASK ACCURACY COMES FROM
+
+A constant answer that ignores the molecule -- 0 for every count, [] for
+every index list, and the system prompt's example molecule (CC(O)C)
+for generation -- is already correct on some questions. Accuracy on those
+questions says little about chemistry; accuracy on all other questions does.
+'Non-trivial properties' scores each requested property (or constraint)
+separately and keeps only those the constant answer gets wrong.
+
+Counting  (the constant answer solves 65 of 1800 questions)
+                                        constant-solvable  other questions  non-trivial properties  constant answers
+  base model                                        7.69%            2.59%                   4.80%                3%
+  with shaping reward                              33.85%            2.56%                   4.92%               15%
+  without shaping reward                           40.00%            2.38%                   3.95%               16%
+
+Index attribution  (the constant answer solves 65 of 1740 questions)
+                                        constant-solvable  other questions  non-trivial properties  constant answers
+  base model                                       22.05%            0.02%                   0.02%                4%
+  with shaping reward                               5.13%            0.00%                   0.11%                1%
+  without shaping reward                           76.41%            0.00%                   0.00%               38%
+
+Constrained generation  (the constant answer solves 63 of 1571 questions)
+                                        constant-solvable  other questions  non-trivial properties  constant answers
+  base model                                       47.62%            0.51%                   0.39%                1%
+  with shaping reward                              99.47%            0.04%                   0.04%               88%
+  without shaping reward                           96.30%            0.07%                   0.13%               81%
+
+Training rollouts (training questions, not the benchmark), first vs last 100 steps:
+  Counting, shaped                     steps   1-100  constant-solvable  13.39% (n= 224)  other   5.97% (n=1056)  constant answers   9%
+                                       steps 401-500  constant-solvable  31.70% (n= 224)  other   5.21% (n=1056)  constant answers  19%
+  Counting, unshaped                   steps   1-100  constant-solvable   8.93% (n= 224)  other   7.29% (n=1056)  constant answers   7%
+                                       steps 401-500  constant-solvable  33.93% (n= 224)  other   3.98% (n=1056)  constant answers  20%
+  Index attribution, shaped            steps   1-100  constant-solvable  13.69% (n= 168)  other   0.09% (n=1112)  constant answers   3%
+                                       steps 401-500  constant-solvable   0.00% (n= 168)  other   0.63% (n=1112)  constant answers   0%
+  Index attribution, unshaped          steps   1-100  constant-solvable  14.29% (n= 168)  other   0.18% (n=1112)  constant answers   5%
+                                       steps 401-500  constant-solvable  84.52% (n= 168)  other   0.00% (n=1112)  constant answers  62%
+  Constrained generation, shaped       steps   1-100  constant-solvable  37.50% (n=  32)  other   0.88% (n=1248)  constant answers   7%
+                                       steps 401-500  constant-solvable  91.67% (n=  24)  other   0.24% (n=1256)  constant answers  92%
+  Constrained generation, unshaped     steps   1-100  constant-solvable  46.88% (n=  32)  other   1.44% (n=1248)  constant answers   6%
+                                       steps 401-500  constant-solvable  95.83% (n=  24)  other   0.16% (n=1256)  constant answers  84%

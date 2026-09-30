@@ -1,0 +1,91 @@
+task: moleculariq_pass_at_k
+backend: hf
+dtype: bfloat16
+gen_kwargs:
+  max_gen_toks: 28672
+  temperature: 1.0
+  top_p: 1.0
+  top_k: 0
+  repetition_penalty: 1.0
+
+runs:
+  - run_id: miq-eval-baseline-r001
+    label: baseline
+    model: Qwen/Qwen2.5-0.5B-Instruct
+    batch_size: auto
+  - run_id: miq-eval-count-r001
+    label: count
+    experiment: grpo-count-r001
+    batch_size: auto
+  - run_id: miq-eval-index-r001
+    label: index
+    experiment: grpo-index-r001
+    batch_size: auto
+  - run_id: miq-eval-constraint_generation-r001
+    label: constraint_generation
+    experiment: grpo-constraint-r001
+    batch_size: auto
+
+  - run_id: miq-eval-count_noformat-r002
+    label: count_noformat
+    experiment: grpo-count-r002
+    batch_size: 32
+  - run_id: miq-eval-index_noformat-r002
+    label: index_noformat
+    experiment: grpo-index-r002
+    batch_size: auto
+  - run_id: miq-eval-constraint_generation_noformat-r002
+    label: constraint_generation_noformat
+    experiment: grpo-constraint-r002
+    batch_size: 32
+
+  - run_id: miq-eval-count-r004
+    label: count_v002
+    experiment: grpo-count-r004
+    batch_size: 32
+  - run_id: miq-eval-baseline-vllm
+    label: baseline_vllm
+    model: Qwen/Qwen2.5-0.5B-Instruct
+    backend: vllm
+    gpu_memory_utilization: 0.3
+  - run_id: miq-eval-count-r004-vllm
+    label: count_v002_vllm
+    experiment: grpo-count-r004
+    backend: vllm
+    gpu_memory_utilization: 0.3
+  - run_id: miq-eval-count-r005
+    label: count_v002_lr3e-6
+    experiment: grpo-count-r005
+    backend: vllm
+    gpu_memory_utilization: 0.3
+  - run_id: miq-eval-index-r003
+    label: index_v002
+    experiment: grpo-index-r003
+    backend: vllm
+    gpu_memory_utilization: 0.3
+  - run_id: miq-eval-constraint_generation-r003
+    label: constraint_generation_v002
+    experiment: grpo-constraint-r003
+    backend: vllm
+    gpu_memory_utilization: 0.3
+
+  - run_id: miq-eval-count-r006
+    label: count_v003
+    experiment: grpo-count-r006
+    backend: vllm
+    gpu_memory_utilization: 0.3
+  - run_id: miq-eval-index-r006
+    label: index_v003
+    experiment: grpo-index-r006
+    backend: vllm
+    gpu_memory_utilization: 0.3
+  - run_id: miq-eval-constraint_generation-r006
+    label: constraint_generation_v003
+    experiment: grpo-constraint-r006
+    backend: vllm
+    gpu_memory_utilization: 0.12
+
+not_evaluated:
+  grpo-count-r003: >-
+    stopped at step 100 -- the credit for a correct "none" pulled the policy back
+    to all-zero answers; replaced by grpo-count-r004

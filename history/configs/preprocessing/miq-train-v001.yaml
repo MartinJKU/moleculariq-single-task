@@ -1,0 +1,50 @@
+dataset_artifact_id: miq-train-v001
+
+expected_content_hash: e3dcabe9f78909021fffe6c8f6ec44614f26ef817706f22c85be317d6ebbcc44
+
+source:
+  dataset_id: ml-jku/moleculariq-trainPool
+  split: train
+  revision: 42668d68636c9ab570952ae860c95a1bbdf95b13
+  cache_dir: null
+  local_parquet: null
+
+generation:
+  seed: 42
+
+  family_seeds:
+    count: 4404
+    index: 4802
+    constraint_generation: 4161
+
+  n_reference_molecules: 20000
+
+  n_workers: 8
+
+  randomize_prob: 0.5
+  kekulize_prob: 0.5
+
+  complexity_weights: {"0-250": 0.5, "250-1000": 0.35, "1000-inf": 0.15}
+
+  dev_fraction: 0.05
+
+  tasks:
+    count:
+      n_examples: 8000
+      multitask_weights: {1: 0.60, 2: 0.20, 3: 0.15, 5: 0.05}
+
+    index:
+      n_examples: 8000
+      multitask_weights: {1: 0.60, 2: 0.20, 3: 0.15, 5: 0.05}
+
+    constraint_generation:
+      n_examples: 8000
+      multitask_weights: {1: 0.60, 2: 0.20, 3: 0.15, 5: 0.05}
+      max_constraint_prevalence: 0.03
+      min_constraint_prevalence: 0.0
+
+integrity:
+  forbid_official_benchmark_inputs: true
+  fail_on_duplicate_example_id: true
+  fail_on_prompt_target_leakage: true
+  require_oracle_verified_targets: true

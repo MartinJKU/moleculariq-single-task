@@ -1,0 +1,67 @@
+# The frozen training set all models train on, built offline from the MolecularIQ training pool.
+#   python -m miqgrpo.build_dataset build --config configs/dataset.yaml
+
+dataset_artifact_id: miq-train
+
+expected_content_hash: f146ee7cb496794186dbf57a3183f339157b2299840f2ee48ef83c23392d68df  # a rebuild reproduces this hash; development name: miq-train-v003 (README, "Dataset names")
+
+source:  # the MolecularIQ training pool
+  dataset_id: ml-jku/moleculariq-trainPool
+  split: train
+  revision: 42668d68636c9ab570952ae860c95a1bbdf95b13  # pinned Hub revision
+  cache_dir: null
+  local_parquet: null
+
+generation:
+  seed: 42
+  n_reference_molecules: 60000  # molecules sampled from the pool
+  n_workers: 64  # CPU processes
+  randomize_prob: 0.5  # share of randomised SMILES
+  kekulize_prob: 0.5  # share of kekulised SMILES
+  complexity_weights: {"0-250": 0.5, "250-1000": 0.35, "1000-inf": 0.15}  # share of molecules per Bertz-complexity bin
+  dev_fraction: 0.05  # held out as the dev split
+
+  zero_weight: 0.25  # absent features (0 / []) asked a quarter as often as present ones
+
+  tasks:
+    count:
+      n_examples: 32000
+      multitask_weights: {1: 0.60, 2: 0.20, 3: 0.15, 5: 0.05}  # probability of 1 / 2 / 3 / 5 properties per question
+      max_trivial_fraction: 0.05  # share of questions answered entirely by 0 / [], at most
+      property_weights:  # asked a quarter as often: too hard at this model size
+        molecular_formula_count: 0.25
+        heavy_atom_count: 0.25
+        hydrogen_atom_count: 0.25
+        carbon_atom_count: 0.25
+        csp3_carbon_count: 0.25
+        smallest_largest_ring_size_smallest_count: 0.25
+        smallest_largest_ring_size_largest_count: 0.25
+
+    index:
+      n_examples: 32000
+      multitask_weights: {1: 0.60, 2: 0.20, 3: 0.15, 5: 0.05}  # probability of 1 / 2 / 3 / 5 properties per question
+      max_trivial_fraction: 0.05  # share of questions answered entirely by 0 / [], at most
+
+    constraint_generation:
+      n_examples: 32000
+      multitask_weights: {1: 0.60, 2: 0.20, 3: 0.15, 5: 0.05}  # probability of 1 / 2 / 3 / 5 properties per question
+      max_constraint_prevalence: 0.5  # reject constraints met by more than half of the molecules
+      min_constraint_prevalence: 0.0
+      value_frequency_power: 0.0  # 0 = molecules drawn uniformly (typical constraint values)
+      skip_unseedable_properties: true  # skip properties no molecule can seed
+      default_molecules:  # reject questions one of these molecules answers
+        - CC(O)C
+        - CCO
+        - CC=O
+        - CCC
+        - CC(C)C
+        - CC(C)=O
+        - CCCCC
+        - CC
+        - CC(=O)O
+
+integrity:  # checks the build enforces
+  forbid_official_benchmark_inputs: true
+  fail_on_duplicate_example_id: true
+  fail_on_prompt_target_leakage: true
+  require_oracle_verified_targets: true

@@ -1,0 +1,522 @@
+{
+  "model": "/workspace/miq/runs/pilot-index-v002-lr3e-6/final",
+  "artifact": "miq-train-v002",
+  "split": "index_dev",
+  "samples": 8,
+  "seed": 0,
+  "max_tokens": 1024,
+  "questions": {
+    "all": {
+      "mean": 0.0015625,
+      "n": 400
+    },
+    "other": {
+      "mean": 0.0016025641025641025,
+      "n": 390
+    },
+    "trivial": {
+      "mean": 0.0,
+      "n": 10
+    }
+  },
+  "properties": {
+    "nontrivial": {
+      "mean": 0.005048076923076923,
+      "n": 520
+    },
+    "nontrivial_credit": {
+      "mean": 0.3398985939327918,
+      "n": 520
+    },
+    "atypical": {
+      "mean": 0.003898635477582846,
+      "n": 513
+    },
+    "typical": {
+      "mean": 0.125,
+      "n": 5
+    }
+  },
+  "constant_answer_share": {
+    "mean": 0.0,
+    "n": 400
+  },
+  "typical_answer_share": {
+    "mean": 0.00361969111969112,
+    "n": 518
+  },
+  "by_property": {
+    "aliphatic_ring_index": {
+      "mean": 0.0,
+      "n": 23
+    },
+    "aromatic_ring_index": {
+      "mean": 0.0,
+      "n": 13
+    },
+    "branch_point_index": {
+      "mean": 0.0,
+      "n": 23
+    },
+    "bridgehead_index": {
+      "mean": 0.0,
+      "n": 15
+    },
+    "carbon_atom_index": {
+      "mean": 0.0,
+      "n": 25
+    },
+    "chain_termini_index": {
+      "mean": 0.0,
+      "n": 26
+    },
+    "csp3_carbon_index": {
+      "mean": 0.0,
+      "n": 17
+    },
+    "functional_group_alpha_beta_unsaturated_index": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_aromatic_index": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_azide_index": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_carbodiimide_index": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_carbonate_index": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_diazo_index": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_disulfide_index": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_hydroperoxide_index": {
+      "mean": 0.0,
+      "n": 2
+    },
+    "functional_group_mesyl_index": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_methyl_index": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_nitrile_index": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_phosphonic_acid_index": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_primary_amine_index": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_quaternary_ammonium_index": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_urea_index": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "fused_ring_index": {
+      "mean": 0.0,
+      "n": 17
+    },
+    "halogen_atom_index": {
+      "mean": 0.0,
+      "n": 25
+    },
+    "hba_index": {
+      "mean": 0.0,
+      "n": 29
+    },
+    "hbd_index": {
+      "mean": 0.0,
+      "n": 30
+    },
+    "heavy_atom_index": {
+      "mean": 0.08189655172413793,
+      "n": 29
+    },
+    "hetero_atom_index": {
+      "mean": 0.0,
+      "n": 29
+    },
+    "heterocycle_index": {
+      "mean": 0.0,
+      "n": 15
+    },
+    "longest_carbon_chain_index": {
+      "mean": 0.0,
+      "n": 19
+    },
+    "murcko_scaffold_index": {
+      "mean": 0.0,
+      "n": 28
+    },
+    "ring_index": {
+      "mean": 0.0,
+      "n": 17
+    },
+    "rotatable_bond_index": {
+      "mean": 0.0,
+      "n": 24
+    },
+    "saturated_ring_index": {
+      "mean": 0.005208333333333333,
+      "n": 24
+    },
+    "smallest_largest_ring_size_largest_index": {
+      "mean": 0.0,
+      "n": 7
+    },
+    "smallest_largest_ring_size_smallest_index": {
+      "mean": 0.0,
+      "n": 10
+    },
+    "stereocenter_index": {
+      "mean": 0.0,
+      "n": 24
+    },
+    "stereochemistry_unspecified_double_bond_index": {
+      "mean": 0.007352941176470588,
+      "n": 17
+    },
+    "unspecified_stereocenter_index": {
+      "mean": 0.0,
+      "n": 18
+    }
+  },
+  "credit_by_property": {
+    "aliphatic_ring_index": {
+      "mean": 0.41159361272090217,
+      "n": 23
+    },
+    "aromatic_ring_index": {
+      "mean": 0.4209051863206433,
+      "n": 13
+    },
+    "branch_point_index": {
+      "mean": 0.24951455316844592,
+      "n": 23
+    },
+    "bridgehead_index": {
+      "mean": 0.1711334898287141,
+      "n": 15
+    },
+    "carbon_atom_index": {
+      "mean": 0.5271225803357502,
+      "n": 25
+    },
+    "chain_termini_index": {
+      "mean": 0.1857306681673012,
+      "n": 26
+    },
+    "csp3_carbon_index": {
+      "mean": 0.48126549162388405,
+      "n": 17
+    },
+    "functional_group_alpha_beta_unsaturated_index": {
+      "mean": 0.08163313917896303,
+      "n": 1
+    },
+    "functional_group_aromatic_index": {
+      "mean": 0.6666666666666666,
+      "n": 1
+    },
+    "functional_group_azide_index": {
+      "mean": 0.23776345182595182,
+      "n": 1
+    },
+    "functional_group_carbodiimide_index": {
+      "mean": 0.27954545454545454,
+      "n": 1
+    },
+    "functional_group_carbonate_index": {
+      "mean": 0.6015151515151514,
+      "n": 1
+    },
+    "functional_group_diazo_index": {
+      "mean": 0.103570577607876,
+      "n": 1
+    },
+    "functional_group_disulfide_index": {
+      "mean": 0.029784710819193577,
+      "n": 1
+    },
+    "functional_group_hydroperoxide_index": {
+      "mean": 0.3892045454545454,
+      "n": 2
+    },
+    "functional_group_mesyl_index": {
+      "mean": 0.37793196386946387,
+      "n": 1
+    },
+    "functional_group_methyl_index": {
+      "mean": 0.1157608016983017,
+      "n": 1
+    },
+    "functional_group_nitrile_index": {
+      "mean": 0.036616161616161616,
+      "n": 1
+    },
+    "functional_group_phosphonic_acid_index": {
+      "mean": 0.3946729991602852,
+      "n": 1
+    },
+    "functional_group_primary_amine_index": {
+      "mean": 0.05904658747050051,
+      "n": 1
+    },
+    "functional_group_quaternary_ammonium_index": {
+      "mean": 0.11647727272727272,
+      "n": 1
+    },
+    "functional_group_urea_index": {
+      "mean": 0.19996775025799793,
+      "n": 1
+    },
+    "fused_ring_index": {
+      "mean": 0.426217518947067,
+      "n": 17
+    },
+    "halogen_atom_index": {
+      "mean": 0.21632214493862353,
+      "n": 25
+    },
+    "hba_index": {
+      "mean": 0.1774589698759744,
+      "n": 29
+    },
+    "hbd_index": {
+      "mean": 0.17329983762959664,
+      "n": 30
+    },
+    "heavy_atom_index": {
+      "mean": 0.7345572784159147,
+      "n": 29
+    },
+    "hetero_atom_index": {
+      "mean": 0.23935158429355455,
+      "n": 29
+    },
+    "heterocycle_index": {
+      "mean": 0.2910709097661717,
+      "n": 15
+    },
+    "longest_carbon_chain_index": {
+      "mean": 0.3726013203907395,
+      "n": 19
+    },
+    "murcko_scaffold_index": {
+      "mean": 0.4827335167236625,
+      "n": 28
+    },
+    "ring_index": {
+      "mean": 0.4618946512423835,
+      "n": 17
+    },
+    "rotatable_bond_index": {
+      "mean": 0.439580113874725,
+      "n": 24
+    },
+    "saturated_ring_index": {
+      "mean": 0.4515289542080963,
+      "n": 24
+    },
+    "smallest_largest_ring_size_largest_index": {
+      "mean": 0.28553852218662085,
+      "n": 7
+    },
+    "smallest_largest_ring_size_smallest_index": {
+      "mean": 0.35044999278461403,
+      "n": 10
+    },
+    "stereocenter_index": {
+      "mean": 0.17602917263534457,
+      "n": 24
+    },
+    "stereochemistry_unspecified_double_bond_index": {
+      "mean": 0.27414651613507374,
+      "n": 17
+    },
+    "unspecified_stereocenter_index": {
+      "mean": 0.18907478413132286,
+      "n": 18
+    }
+  },
+  "answer_size_ratio_by_property": {
+    "aliphatic_ring_index": {
+      "mean": 1.6239641691743614,
+      "n": 23
+    },
+    "aromatic_ring_index": {
+      "mean": 1.2571342670877637,
+      "n": 13
+    },
+    "branch_point_index": {
+      "mean": 4.018118999848815,
+      "n": 23
+    },
+    "bridgehead_index": {
+      "mean": 5.332271825396826,
+      "n": 15
+    },
+    "carbon_atom_index": {
+      "mean": 2.0980179470118463,
+      "n": 25
+    },
+    "chain_termini_index": {
+      "mean": 6.275419719169719,
+      "n": 26
+    },
+    "csp3_carbon_index": {
+      "mean": 0.9857230253494871,
+      "n": 17
+    },
+    "functional_group_alpha_beta_unsaturated_index": {
+      "mean": 5.71875,
+      "n": 1
+    },
+    "functional_group_aromatic_index": {
+      "mean": 1.125,
+      "n": 1
+    },
+    "functional_group_azide_index": {
+      "mean": 3.5833333333333335,
+      "n": 1
+    },
+    "functional_group_carbodiimide_index": {
+      "mean": 3.583333333333333,
+      "n": 1
+    },
+    "functional_group_carbonate_index": {
+      "mean": 1.6666666666666667,
+      "n": 1
+    },
+    "functional_group_diazo_index": {
+      "mean": 9.875,
+      "n": 1
+    },
+    "functional_group_disulfide_index": {
+      "mean": 12.25,
+      "n": 1
+    },
+    "functional_group_hydroperoxide_index": {
+      "mean": 1.734375,
+      "n": 2
+    },
+    "functional_group_mesyl_index": {
+      "mean": 2.6750000000000003,
+      "n": 1
+    },
+    "functional_group_methyl_index": {
+      "mean": 15.25,
+      "n": 1
+    },
+    "functional_group_nitrile_index": {
+      "mean": 3.625,
+      "n": 1
+    },
+    "functional_group_phosphonic_acid_index": {
+      "mean": 2.3645833333333335,
+      "n": 1
+    },
+    "functional_group_primary_amine_index": {
+      "mean": 20.0,
+      "n": 1
+    },
+    "functional_group_quaternary_ammonium_index": {
+      "mean": 8.875,
+      "n": 1
+    },
+    "functional_group_urea_index": {
+      "mean": 1.671875,
+      "n": 1
+    },
+    "fused_ring_index": {
+      "mean": 2.118192919911186,
+      "n": 17
+    },
+    "halogen_atom_index": {
+      "mean": 5.0765601898101895,
+      "n": 25
+    },
+    "hba_index": {
+      "mean": 6.4578722480245005,
+      "n": 29
+    },
+    "hbd_index": {
+      "mean": 5.37604332010582,
+      "n": 30
+    },
+    "heavy_atom_index": {
+      "mean": 0.9066420016612756,
+      "n": 29
+    },
+    "hetero_atom_index": {
+      "mean": 3.908942124314449,
+      "n": 29
+    },
+    "heterocycle_index": {
+      "mean": 2.5478229446979443,
+      "n": 15
+    },
+    "longest_carbon_chain_index": {
+      "mean": 2.0692329912792062,
+      "n": 19
+    },
+    "murcko_scaffold_index": {
+      "mean": 2.1302859240366208,
+      "n": 28
+    },
+    "ring_index": {
+      "mean": 1.7770447851600533,
+      "n": 17
+    },
+    "rotatable_bond_index": {
+      "mean": 2.4458978409612118,
+      "n": 24
+    },
+    "saturated_ring_index": {
+      "mean": 1.7458652892246642,
+      "n": 24
+    },
+    "smallest_largest_ring_size_largest_index": {
+      "mean": 2.0820686229037073,
+      "n": 7
+    },
+    "smallest_largest_ring_size_smallest_index": {
+      "mean": 1.4081430375180375,
+      "n": 10
+    },
+    "stereocenter_index": {
+      "mean": 7.172354714912281,
+      "n": 24
+    },
+    "stereochemistry_unspecified_double_bond_index": {
+      "mean": 4.247487745098039,
+      "n": 17
+    },
+    "unspecified_stereocenter_index": {
+      "mean": 5.289203042328043,
+      "n": 18
+    }
+  }
+}

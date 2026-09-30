@@ -1,0 +1,102 @@
+main:
+  baseline: miq-eval-baseline-r001
+  models:
+    - label: count
+      display: GRPO, count only
+      task_type: count
+      evaluation: miq-eval-count-r001
+      training: grpo-count-r001
+    - label: index
+      display: GRPO, index only
+      task_type: index
+      evaluation: miq-eval-index-r001
+      training: grpo-index-r001
+    - label: constraint_generation
+      display: GRPO, constrained generation only
+      task_type: generation
+      evaluation: miq-eval-constraint_generation-r001
+      training: grpo-constraint-r001
+
+ablation:
+  benchmark_informed: true
+  variable: rewards.format_weight 0.1 -> 0.0
+  baseline: miq-eval-baseline-r001
+  arms:
+    - family: Counting
+      task_type: count
+      shaped:   {evaluation: miq-eval-count-r001, training: grpo-count-r001}
+      unshaped: {evaluation: miq-eval-count_noformat-r002, training: grpo-count-r002}
+    - family: Index attribution
+      task_type: index
+      shaped:   {evaluation: miq-eval-index-r001, training: grpo-index-r001}
+      unshaped: {evaluation: miq-eval-index_noformat-r002, training: grpo-index-r002}
+    - family: Constrained generation
+      task_type: generation
+      shaped:   {evaluation: miq-eval-constraint_generation-r001, training: grpo-constraint-r001}
+      unshaped: {evaluation: miq-eval-constraint_generation_noformat-r002, training: grpo-constraint-r002}
+
+recipe:
+  benchmark_informed: true
+  baseline: miq-eval-baseline-vllm
+  backend_check:
+    - [miq-eval-baseline-r001, miq-eval-baseline-vllm]
+    - [miq-eval-count-r004, miq-eval-count-r004-vllm]
+  dataset: miq-train-v002
+  models:
+    - label: count
+      display: GRPO v002, count only (lr 1e-5)
+      task_type: count
+      evaluation: miq-eval-count-r004-vllm
+      training: grpo-count-r004
+      previous: miq-eval-count-r001
+      dev: {split: count_dev, base: base-count, model: grpo-count-r004}
+    - label: count_lr3e-6
+      display: GRPO v002, count only (lr 3e-6)
+      task_type: count
+      evaluation: miq-eval-count-r005
+      training: grpo-count-r005
+      previous: miq-eval-count-r001
+      dev: {split: count_dev, base: base-count, model: grpo-count-r005}
+    - label: index
+      display: GRPO v002, index only
+      task_type: index
+      evaluation: miq-eval-index-r003
+      training: grpo-index-r003
+      previous: miq-eval-index-r001
+      dev: {split: index_dev, base: base-index, model: grpo-index-r003}
+    - label: constraint_generation
+      display: GRPO v002, constrained generation only
+      task_type: generation
+      evaluation: miq-eval-constraint_generation-r003
+      training: grpo-constraint-r003
+      previous: miq-eval-constraint_generation-r001
+      dev: {split: constraint_generation_dev, base: base-constraint, model: grpo-constraint-r003}
+
+recipe_v003:
+  name: v003
+  previous_name: v002
+  benchmark_informed: true
+  baseline: miq-eval-baseline-vllm
+  dataset: miq-train-v003
+  models:
+    - label: count
+      display: GRPO v003, count only
+      task_type: count
+      evaluation: miq-eval-count-r006
+      training: grpo-count-r006
+      previous: miq-eval-count-r005
+      dev: {split: count_dev, base: base-count-v003, model: grpo-count-r006}
+    - label: index
+      display: GRPO v003, index only
+      task_type: index
+      evaluation: miq-eval-index-r006
+      training: grpo-index-r006
+      previous: miq-eval-index-r003
+      dev: {split: index_dev, base: base-index-v003, model: grpo-index-r006}
+    - label: constraint_generation
+      display: GRPO v003, constrained generation only
+      task_type: generation
+      evaluation: miq-eval-constraint_generation-r006
+      training: grpo-constraint-r006
+      previous: miq-eval-constraint_generation-r003
+      dev: {split: constraint_generation_dev, base: base-constraint-v003, model: grpo-constraint-r006}

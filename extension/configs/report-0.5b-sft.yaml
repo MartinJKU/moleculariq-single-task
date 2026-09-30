@@ -1,0 +1,24 @@
+# Report for the extension's 0.5B models with the supervised warm-up.
+#   python -m miqgrpo.report --spec extension/configs/report-0.5b-sft.yaml --out $MIQ_RESULTS/report-extension/0.5b-sft
+
+baseline: miq-eval-base
+dataset: miq-train
+models:
+  - label: count
+    display: SFT + GRPO, count only
+    task_type: count
+    evaluation: miq-eval-count-0.5b-sft
+    training: count-0.5b-sft
+    dev: {split: count_dev, base: base-count, model: count-0.5b-sft}
+  - label: index
+    display: SFT + GRPO, index only
+    task_type: index
+    evaluation: miq-eval-index-0.5b-sft
+    training: index-0.5b-sft
+    dev: {split: index_dev, base: base-index, model: index-0.5b-sft}
+  - label: constraint_generation
+    display: SFT + GRPO, constrained generation only
+    task_type: generation
+    evaluation: miq-eval-constraint_generation-0.5b-sft
+    training: constraint_generation-0.5b-sft
+    dev: {split: constraint_generation_dev, base: base-constraint_generation, model: constraint_generation-0.5b-sft}

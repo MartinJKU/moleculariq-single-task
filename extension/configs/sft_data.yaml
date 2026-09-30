@@ -1,0 +1,17 @@
+# Worked solutions for the supervised warm-up, built from the training splits of miq-train.
+#   python -m miqgrpo.sft_data build --config extension/configs/sft_data.yaml
+
+dataset_artifact_id: miq-sft
+expected_content_hash: 2367614dcda3b5a9f5cb7d7b956d57adb91bdfb9695793545e6478313c4a0dad
+
+source:
+  artifact_id: miq-train
+  expected_content_hash: f146ee7cb496794186dbf57a3183f339157b2299840f2ee48ef83c23392d68df
+
+seed: 42
+examples_per_family:
+  count: 16000
+  index: 16000
+  constraint_generation: 16000
+n_workers: 64
+tokenizer: Qwen/Qwen2.5-0.5B-Instruct

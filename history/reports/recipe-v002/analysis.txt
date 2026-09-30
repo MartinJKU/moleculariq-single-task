@@ -1,0 +1,132 @@
+RECIPE v002 -- per-property reward on dataset miq-train-v002
+
+Benchmark-informed: designed after the r001 benchmark results had been
+seen. Settings were chosen on the dev split (held-out training-distribution
+questions); the benchmark was run once per final model.
+
+Dev split during training (first and last evaluation):
+  GRPO v002, count only (lr 1e-5)          step   0 -> 600   fully correct 6.54% -> 11.04%   per-property 9.06% -> 16.71%   constant answers 0.06%
+  GRPO v002, count only (lr 3e-6)          step   0 -> 600   fully correct 6.54% -> 11.48%   per-property 9.06% -> 17.01%   constant answers 0.19%
+  GRPO v002, index only                    step   0 -> 600   fully correct 0.12% -> 0.00%   per-property 6.96% -> 34.23%   constant answers 0.00%
+  GRPO v002, constrained generation only   step   0 -> 600   fully correct 1.50% -> 16.56%   per-property 1.50% -> 17.31%   constant answers 0.31%
+
+Dev split, base model vs final model (8 answers per question):
+  'typical'/'atypical': properties whose true value is / is not the
+  property's most common value in the training split.
+                                                                base    final
+  count only (lr 1e-5)                 other questions         6.76%   11.09%
+  count only (lr 1e-5)                 typical values         22.38%   61.88%
+  count only (lr 1e-5)                 atypical values         6.49%    7.55%
+  count only (lr 1e-5)                 correct "0"            11.25%    2.50%
+  count only (lr 3e-6)                 other questions         6.76%   11.57%
+  count only (lr 3e-6)                 typical values         22.38%   61.27%
+  count only (lr 3e-6)                 atypical values         6.49%    8.15%
+  count only (lr 3e-6)                 correct "0"            11.25%    2.50%
+  index only                           other questions         0.16%    0.10%
+  index only                           atom overlap            6.62%   34.86%
+  index only                           correct "[]"            8.75%    0.00%
+  constrained generation only          other questions         1.62%   15.91%
+
+Backend check: the same model on the HF and the vLLM backend of the
+official harness (same prompt, sampling settings and cap). Paired
+difference vLLM - HF, 95% bootstrap CI over items; expected to include 0.
+                                           HF     vLLM   difference
+  miq-eval-baseline-r001                2.00%    2.01%    +0.01 pp  [ -0.26,  +0.27]  not significant
+  miq-eval-count-r004                   1.70%    1.66%    -0.04 pp  [ -0.19,  +0.11]  not significant
+
+Official MolecularIQ benchmark (5,111 items, 3 attempts each):
+  Qwen2.5-0.5B-Instruct (base)             pass@1= 2.21%  pass@3= 4.54%  avg accuracy= 2.01%
+  GRPO v002, count only (lr 1e-5)          pass@1= 1.70%  pass@3= 2.37%  avg accuracy= 1.66%
+  GRPO v002, count only (lr 3e-6)          pass@1= 2.25%  pass@3= 3.80%  avg accuracy= 2.20%
+  GRPO v002, index only                    pass@1= 1.88%  pass@3= 4.09%  avg accuracy= 1.84%
+  GRPO v002, constrained generation only   pass@1= 3.01%  pass@3= 5.03%  avg accuracy= 2.79%
+
+avg_accuracy by task type:
+                                                          Counting       Index attribution  Constrained generation
+  Qwen2.5-0.5B-Instruct (base)                               2.94%                   0.77%                   2.31%
+  GRPO v002, count only (lr 1e-5)                            3.22%                   0.04%                   1.68%
+  GRPO v002, count only (lr 3e-6)                            3.78%                   0.56%                   2.23%
+  GRPO v002, index only                                      3.22%                   0.19%                   2.08%
+  GRPO v002, constrained generation only                     3.69%                   0.25%                   4.58%
+  constant answer (reference)                                3.61%                   3.74%                   4.01%
+
+Headline (avg_accuracy over all items), paired change, 95% bootstrap CI over items:
+  GRPO v002, count only (lr 1e-5)
+    vs base model                       -0.35 pp  [ -0.67,  -0.01]  significant
+    vs miq-eval-count-r001              -0.68 pp  [ -1.04,  -0.33]  significant
+  GRPO v002, count only (lr 3e-6)
+    vs base model                       +0.20 pp  [ -0.11,  +0.50]  not significant
+    vs miq-eval-count-r001              -0.14 pp  [ -0.48,  +0.19]  not significant
+  GRPO v002, index only
+    vs base model                       -0.17 pp  [ -0.46,  +0.12]  not significant
+    vs miq-eval-index-r001              -0.26 pp  [ -0.56,  +0.05]  not significant
+  GRPO v002, constrained generation only
+    vs base model                       +0.78 pp  [ +0.47,  +1.11]  significant
+    vs miq-eval-constraint_generation-r001  -0.08 pp  [ -0.41,  +0.23]  not significant
+
+Own task, paired change, 95% bootstrap CI over items:
+  GRPO v002, count only (lr 1e-5)
+    vs base model                       +0.28 pp  [ -0.50,  +1.09]  not significant
+    vs miq-eval-count-r001              -0.46 pp  [ -1.28,  +0.37]  not significant
+    vs base model, other questions      +0.69 pp  [ -0.10,  +1.50]  not significant
+  GRPO v002, count only (lr 3e-6)
+    vs base model                       +0.83 pp  [ +0.07,  +1.61]  significant
+    vs miq-eval-count-r001              +0.09 pp  [ -0.70,  +0.91]  not significant
+    vs base model, other questions      +1.27 pp  [ +0.52,  +2.02]  significant
+  GRPO v002, index only
+    vs base model                       -0.57 pp  [ -0.90,  -0.25]  significant
+    vs miq-eval-index-r001              -0.00 pp  [ -0.19,  +0.21]  not significant
+    vs base model, other questions      +0.16 pp  [ +0.00,  +0.34]  not significant
+  GRPO v002, constrained generation only
+    vs base model                       +2.27 pp  [ +1.53,  +3.03]  significant
+    vs miq-eval-constraint_generation-r001  +0.55 pp  [ -0.19,  +1.29]  not significant
+    vs base model, other questions      +1.24 pp  [ +0.69,  +1.83]  significant
+
+A constant answer that ignores the molecule -- 0 for every count, [] for
+every index list, and the system prompt's example molecule (CC(O)C)
+for generation -- is already correct on some questions. Accuracy on those
+questions says little about chemistry; accuracy on all other questions does.
+'Non-trivial properties' scores each requested property (or constraint)
+separately and keeps only those the constant answer gets wrong.
+
+Counting  (the constant answer solves 65 of 1800 questions)
+                                        constant-solvable  other questions  non-trivial properties  constant answers
+  Qwen2.5-0.5B-Instruct (base)                     10.77%            2.65%                   4.76%                3%
+  r001 (miq-eval-count-r001)                       33.85%            2.56%                   4.92%               15%
+  GRPO v002, count only (lr 1e-5)                   0.00%            3.34%                  10.62%                0%
+  GRPO v002, count only (lr 3e-6)                   0.00%            3.92%                   9.78%                0%
+
+Index attribution  (the constant answer solves 65 of 1740 questions)
+                                        constant-solvable  other questions  non-trivial properties  constant answers
+  Qwen2.5-0.5B-Instruct (base)                     20.00%            0.02%                   0.07%                3%
+  r001 (miq-eval-index-r001)                        5.13%            0.00%                   0.11%                1%
+  GRPO v002, index only                             0.51%            0.18%                   0.38%                0%
+
+Constrained generation  (the constant answer solves 63 of 1571 questions)
+                                        constant-solvable  other questions  non-trivial properties  constant answers
+  Qwen2.5-0.5B-Instruct (base)                     42.86%            0.62%                   0.39%                1%
+  r001 (miq-eval-constraint_generation-r001)             99.47%            0.04%                   0.04%               88%
+  GRPO v002, constrained generation only             69.84%            1.86%                   1.58%                0%
+
+Counting on the benchmark, per property (true value > 0), split by whether
+the true value is the property's most common value in the training split
+(miq-train-v002); a per-property default can only get 'typical' right:
+                                              typical   atypical
+  Qwen2.5-0.5B-Instruct (base)                 14.32%      3.80%   (n = 305 / 3051)
+  GRPO v002, count only (lr 1e-5)              66.45%      5.04%   (n = 305 / 3051)
+  GRPO v002, count only (lr 3e-6)              52.02%      5.56%   (n = 305 / 3051)
+  Paired change vs the base model on atypical values, 95% CI over questions:
+    GRPO v002, count only (lr 1e-5)         +0.84 pp  [ -0.01,  +1.71]  not significant
+    GRPO v002, count only (lr 3e-6)         +1.57 pp  [ +0.76,  +2.39]  significant
+
+Constrained generation on the benchmark, split by whether one of the 9
+default molecules the training data was filtered against meets every
+constraint (CC(O)C, CCO, CC=O, CCC, CC(C)C, CC(C)=O, CCCCC, CC, CC(=O)O):
+                                            default solves  no default solves  distinct answers             most common answer
+  Qwen2.5-0.5B-Instruct (base)                      38.96%              0.27%    3671 / 4713                  None   7.7%
+  r001 (miq-eval-constraint_generation-r001)          75.90%              0.02%     335 / 4713                CC(O)C  87.5%
+  GRPO v002, constrained generation only            55.42%              1.75%    2336 / 4713       CC(O)CC(O)CC(O)  12.4%
+  (n = 83 / 1488 questions)
+  Paired change vs the base model on questions no default molecule solves:
+    r001 (miq-eval-constraint_generation-r001)  -0.25 pp  [ -0.45,  -0.09]  significant
+    GRPO v002, constrained generation only  +1.48 pp  [ +0.96,  +2.04]  significant

@@ -1,0 +1,24 @@
+# What goes into the report ($MIQ_RESULTS/report/).
+#   python -m miqgrpo.report --spec configs/report.yaml
+
+baseline: miq-eval-base  # evaluation run of the untrained base model
+dataset: miq-train  # its training split defines typical values and default molecules
+models:  # per model: evaluation run, training run, dev-split results
+  - label: count
+    display: GRPO, count only
+    task_type: count
+    evaluation: miq-eval-count
+    training: count
+    dev: {split: count_dev, base: base-count, model: count}
+  - label: index
+    display: GRPO, index only
+    task_type: index
+    evaluation: miq-eval-index
+    training: index
+    dev: {split: index_dev, base: base-index, model: index}
+  - label: constraint_generation
+    display: GRPO, constrained generation only
+    task_type: generation
+    evaluation: miq-eval-constraint_generation
+    training: constraint_generation
+    dev: {split: constraint_generation_dev, base: base-constraint_generation, model: constraint_generation}

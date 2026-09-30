@@ -1,0 +1,41 @@
+# Benchmark runs of the extension (warm-up and 1.5B models), settings as in configs/evaluation.yaml.
+#   python -m miqgrpo.evaluate all --config extension/configs/evaluation.yaml --only <labels>
+
+task: moleculariq_pass_at_k
+backend: vllm
+dtype: bfloat16
+gpu_memory_utilization: 0.3
+gen_kwargs:
+  max_gen_toks: 28672
+  temperature: 1.0
+  top_p: 1.0
+  top_k: 0
+  repetition_penalty: 1.0
+
+runs:
+  - run_id: miq-eval-base-1.5b
+    label: base-1.5b
+    model: Qwen/Qwen2.5-1.5B-Instruct
+
+  - run_id: miq-eval-count-0.5b-sft
+    label: count-0.5b-sft
+    experiment: count-0.5b-sft
+  - run_id: miq-eval-index-0.5b-sft
+    label: index-0.5b-sft
+    experiment: index-0.5b-sft
+  - run_id: miq-eval-constraint_generation-0.5b-sft
+    label: constraint_generation-0.5b-sft
+    experiment: constraint_generation-0.5b-sft
+
+  - run_id: miq-eval-count-1.5b
+    label: count-1.5b
+    experiment: count-1.5b
+  - run_id: miq-eval-index-1.5b
+    label: index-1.5b
+    experiment: index-1.5b
+  - run_id: miq-eval-constraint_generation-1.5b
+    label: constraint_generation-1.5b
+    experiment: constraint_generation-1.5b
+  - run_id: miq-eval-constraint_generation-1.5b-grpo-only
+    label: constraint_generation-1.5b-grpo-only
+    experiment: constraint_generation-1.5b-grpo-only

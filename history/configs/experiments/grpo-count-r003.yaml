@@ -1,0 +1,85 @@
+experiment:
+  id: grpo-count-r003
+  task_family: count
+  notes: >-
+    Final count run of the v002 recipe: miq-train-v002, per-property
+    partial credit, vLLM rollouts, 600 steps.
+
+model:
+  id: Qwen/Qwen2.5-0.5B-Instruct
+  revision: null
+  dtype: bfloat16
+  attn_implementation: null
+  peft:
+    enabled: false
+
+data:
+  artifact_id: miq-train-v002
+  split: count
+  dev_split: count_dev
+  expected_hash: 17c60740ce9074bb1843e68648796caecfe98a0c8098fff54a319a219f254660
+
+grpo:
+  learning_rate: 1.0e-5
+  lr_scheduler_type: constant_with_warmup
+  warmup_steps: 10
+  weight_decay: 0.0
+  max_grad_norm: 1.0
+
+  per_device_train_batch_size: 16
+  gradient_accumulation_steps: 4
+  num_generations: 16
+
+  max_completion_length: 512
+
+  temperature: 1.0
+  top_p: 1.0
+  top_k: 0
+  min_p: null
+  repetition_penalty: 1.0
+
+  beta: 0.0
+  epsilon: 0.2
+  epsilon_high: null
+  loss_type: dapo
+  scale_rewards: group
+  num_iterations: 1
+  mask_truncated_completions: false
+
+  max_steps: 600
+  num_train_epochs: 1.0
+  gradient_checkpointing: true
+  bf16: true
+
+rewards:
+  correctness_weight: 1.0
+  partial_weight: 1.0
+  trivial_weight: 0.25
+  format_weight: 0.0
+  validity_weight: 0.0
+
+runtime:
+  seed: 42
+  logging_steps: 5
+  save_steps: 100
+  save_total_limit: 1
+  eval_steps: 100
+  eval_on_start: true
+  eval_max_examples: 400
+  num_generations_eval: 4
+  per_device_eval_batch_size: 16
+  log_completions: true
+  num_completions_to_print: 4
+  use_vllm: true
+  vllm_mode: colocate
+  vllm_gpu_memory_utilization: 0.1
+  report_to: none
+  dataloader_num_workers: 0
+
+benchmark_integrity:
+  official_benchmark_used_for_training: false
+  official_benchmark_used_for_hparam_selection: false
+  official_benchmark_used_for_prompt_tuning: false
+  official_benchmark_used_for_extraction_tuning: false
+  official_benchmark_used_for_checkpoint_selection: false
+  official_benchmark_run_ids: []

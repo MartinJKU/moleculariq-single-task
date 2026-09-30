@@ -1,0 +1,24 @@
+{
+  "moleculariq_extractors.py": {
+    "repo": "https://github.com/ml-jku/moleculariq-eval",
+    "path": "lm_eval/tasks/moleculariq/extractors.py",
+    "commit": "425ecaaa8faf65aa43aa60ec0f584b7b7f060063",
+    "upstream_sha256": "c82952812c1fc92d093258080d89614a347d152bfac700a9d5425b9660fd1573",
+    "vendored_on": "2026-09-22",
+    "note": "Copied verbatim below a provenance docstring; the body after the docstring must stay byte-identical to upstream."
+  },
+  "moleculariq_system_prompt.py": {
+    "repo": "https://github.com/ml-jku/moleculariq-eval",
+    "path": "lm_eval/tasks/moleculariq/task_processor.py",
+    "commit": "425ecaaa8faf65aa43aa60ec0f584b7b7f060063",
+    "symbol": "SYSTEM_PROMPT",
+    "vendored_on": "2026-09-22",
+    "note": "Extracted verbatim from task_processor.SYSTEM_PROMPT. This is what the benchmark passes to the model and is therefore authoritative. It differs from moleculariq_core.SYSTEM_PROMPTS['concise'] by one trailing space after 'Examples:'; tests/test_prompts.py asserts both the byte hash and the whitespace-insensitive equality with core.",
+    "sha256": "b764bc35f25897cbcdf5dcf38af61dda546df89c5e38a4f9d931773f7c33af56"
+  },
+  "upstream_commits": {
+    "moleculariq-core": "a1b89635371c3cd942e44ebeec63ec3665e7743d",
+    "moleculariq-eval": "425ecaaa8faf65aa43aa60ec0f584b7b7f060063",
+    "moleculariq-benchmark": "cf08baa880cf5243e4b7c97fdacb01b5292eef9e"
+  }
+}

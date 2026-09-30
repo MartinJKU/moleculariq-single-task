@@ -1,0 +1,621 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "artifact": "miq-train-v003",
+  "split": "count_dev",
+  "samples": 8,
+  "seed": 0,
+  "max_tokens": 1024,
+  "questions": {
+    "all": {
+      "mean": 0.05671875,
+      "n": 1600
+    },
+    "other": {
+      "mean": 0.05584930601454065,
+      "n": 1513
+    },
+    "trivial": {
+      "mean": 0.07183908045977011,
+      "n": 87
+    }
+  },
+  "properties": {
+    "nontrivial": {
+      "mean": 0.08548233046800383,
+      "n": 2094
+    },
+    "nontrivial_credit": {
+      "mean": 0.08548233046800383,
+      "n": 2094
+    },
+    "atypical": {
+      "mean": 0.07167645488521089,
+      "n": 1873
+    },
+    "typical": {
+      "mean": 0.20248868778280543,
+      "n": 221
+    }
+  },
+  "constant_answer_share": {
+    "mean": 0.06265625,
+    "n": 1600
+  },
+  "typical_answer_share": {
+    "mean": 0.14040114613180515,
+    "n": 2094
+  },
+  "by_property": {
+    "aliphatic_ring_count": {
+      "mean": 0.13202247191011235,
+      "n": 89
+    },
+    "aromatic_ring_count": {
+      "mean": 0.21153846153846154,
+      "n": 52
+    },
+    "branch_point_count": {
+      "mean": 0.10416666666666667,
+      "n": 96
+    },
+    "bridgehead_count": {
+      "mean": 0.19010416666666666,
+      "n": 48
+    },
+    "carbon_atom_count": {
+      "mean": 0.052570093457943924,
+      "n": 107
+    },
+    "chain_termini_count": {
+      "mean": 0.05890804597701149,
+      "n": 87
+    },
+    "csp3_carbon_count": {
+      "mean": 0.024484536082474227,
+      "n": 97
+    },
+    "functional_group_acetal_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_acyl_chloride_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_acyl_iodide_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_aldehyde_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_alkene_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_alkyl_bromide_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_amide_count": {
+      "mean": 0.0,
+      "n": 2
+    },
+    "functional_group_aromatic_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_aziridine_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_benzene_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_benzyl_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_boc_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_butyl_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_carbamate_count": {
+      "mean": 0.0,
+      "n": 3
+    },
+    "functional_group_carbodiimide_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_conjugated_system_count": {
+      "mean": 0.0,
+      "n": 2
+    },
+    "functional_group_diazo_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_enol_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_ester_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_furan_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_hydroperoxide_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_isobutyl_count": {
+      "mean": 0.0,
+      "n": 2
+    },
+    "functional_group_isoquinoline_count": {
+      "mean": 0.0,
+      "n": 2
+    },
+    "functional_group_ketal_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_methyl_count": {
+      "mean": 0.3333333333333333,
+      "n": 3
+    },
+    "functional_group_michael_acceptor_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_n_oxide_count": {
+      "mean": 0.0625,
+      "n": 2
+    },
+    "functional_group_nitro_count": {
+      "mean": 0.0625,
+      "n": 2
+    },
+    "functional_group_peroxide_count": {
+      "mean": 0.0,
+      "n": 3
+    },
+    "functional_group_phosphonium_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_primary_amine_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_propargyl_count": {
+      "mean": 0.125,
+      "n": 1
+    },
+    "functional_group_quinoline_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_sec_butyl_count": {
+      "mean": 0.125,
+      "n": 1
+    },
+    "functional_group_silyl_enol_ether_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_silyl_ether_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_sulfone_count": {
+      "mean": 0.125,
+      "n": 1
+    },
+    "functional_group_sulfoxide_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_thiazole_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_thioester_count": {
+      "mean": 0.0,
+      "n": 2
+    },
+    "functional_group_thioether_count": {
+      "mean": 0.0,
+      "n": 2
+    },
+    "functional_group_thioketone_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_thiol_count": {
+      "mean": 0.125,
+      "n": 1
+    },
+    "functional_group_urea_count": {
+      "mean": 0.0,
+      "n": 2
+    },
+    "functional_group_vinyl_ether_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "fused_ring_count": {
+      "mean": 0.265625,
+      "n": 56
+    },
+    "halogen_atom_count": {
+      "mean": 0.046153846153846156,
+      "n": 65
+    },
+    "hba_count": {
+      "mean": 0.11,
+      "n": 75
+    },
+    "hbd_count": {
+      "mean": 0.13411458333333334,
+      "n": 96
+    },
+    "heavy_atom_count": {
+      "mean": 0.014908256880733946,
+      "n": 109
+    },
+    "hetero_atom_count": {
+      "mean": 0.07142857142857142,
+      "n": 91
+    },
+    "heterocycle_count": {
+      "mean": 0.21428571428571427,
+      "n": 56
+    },
+    "hydrogen_atom_count": {
+      "mean": 0.025280898876404494,
+      "n": 89
+    },
+    "longest_carbon_chain_count": {
+      "mean": 0.053763440860215055,
+      "n": 93
+    },
+    "molecular_formula_count": {
+      "mean": 0.0,
+      "n": 103
+    },
+    "murcko_scaffold_count": {
+      "mean": 0.02631578947368421,
+      "n": 76
+    },
+    "ring_count": {
+      "mean": 0.125,
+      "n": 68
+    },
+    "rotatable_bond_count": {
+      "mean": 0.08433734939759036,
+      "n": 83
+    },
+    "saturated_ring_count": {
+      "mean": 0.19642857142857142,
+      "n": 63
+    },
+    "smallest_largest_ring_size_largest_count": {
+      "mean": 0.005319148936170213,
+      "n": 47
+    },
+    "smallest_largest_ring_size_smallest_count": {
+      "mean": 0.020833333333333332,
+      "n": 36
+    },
+    "stereocenter_count": {
+      "mean": 0.11315789473684211,
+      "n": 95
+    },
+    "stereochemistry_unspecified_double_bond_count": {
+      "mean": 0.11413043478260869,
+      "n": 69
+    },
+    "unspecified_stereocenter_count": {
+      "mean": 0.07244318181818182,
+      "n": 88
+    }
+  },
+  "credit_by_property": {
+    "aliphatic_ring_count": {
+      "mean": 0.13202247191011235,
+      "n": 89
+    },
+    "aromatic_ring_count": {
+      "mean": 0.21153846153846154,
+      "n": 52
+    },
+    "branch_point_count": {
+      "mean": 0.10416666666666667,
+      "n": 96
+    },
+    "bridgehead_count": {
+      "mean": 0.19010416666666666,
+      "n": 48
+    },
+    "carbon_atom_count": {
+      "mean": 0.052570093457943924,
+      "n": 107
+    },
+    "chain_termini_count": {
+      "mean": 0.05890804597701149,
+      "n": 87
+    },
+    "csp3_carbon_count": {
+      "mean": 0.024484536082474227,
+      "n": 97
+    },
+    "functional_group_acetal_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_acyl_chloride_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_acyl_iodide_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_aldehyde_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_alkene_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_alkyl_bromide_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_amide_count": {
+      "mean": 0.0,
+      "n": 2
+    },
+    "functional_group_aromatic_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_aziridine_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_benzene_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_benzyl_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_boc_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_butyl_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_carbamate_count": {
+      "mean": 0.0,
+      "n": 3
+    },
+    "functional_group_carbodiimide_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_conjugated_system_count": {
+      "mean": 0.0,
+      "n": 2
+    },
+    "functional_group_diazo_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_enol_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_ester_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_furan_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_hydroperoxide_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_isobutyl_count": {
+      "mean": 0.0,
+      "n": 2
+    },
+    "functional_group_isoquinoline_count": {
+      "mean": 0.0,
+      "n": 2
+    },
+    "functional_group_ketal_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_methyl_count": {
+      "mean": 0.3333333333333333,
+      "n": 3
+    },
+    "functional_group_michael_acceptor_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_n_oxide_count": {
+      "mean": 0.0625,
+      "n": 2
+    },
+    "functional_group_nitro_count": {
+      "mean": 0.0625,
+      "n": 2
+    },
+    "functional_group_peroxide_count": {
+      "mean": 0.0,
+      "n": 3
+    },
+    "functional_group_phosphonium_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_primary_amine_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_propargyl_count": {
+      "mean": 0.125,
+      "n": 1
+    },
+    "functional_group_quinoline_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_sec_butyl_count": {
+      "mean": 0.125,
+      "n": 1
+    },
+    "functional_group_silyl_enol_ether_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_silyl_ether_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_sulfone_count": {
+      "mean": 0.125,
+      "n": 1
+    },
+    "functional_group_sulfoxide_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_thiazole_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_thioester_count": {
+      "mean": 0.0,
+      "n": 2
+    },
+    "functional_group_thioether_count": {
+      "mean": 0.0,
+      "n": 2
+    },
+    "functional_group_thioketone_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "functional_group_thiol_count": {
+      "mean": 0.125,
+      "n": 1
+    },
+    "functional_group_urea_count": {
+      "mean": 0.0,
+      "n": 2
+    },
+    "functional_group_vinyl_ether_count": {
+      "mean": 0.0,
+      "n": 1
+    },
+    "fused_ring_count": {
+      "mean": 0.265625,
+      "n": 56
+    },
+    "halogen_atom_count": {
+      "mean": 0.046153846153846156,
+      "n": 65
+    },
+    "hba_count": {
+      "mean": 0.11,
+      "n": 75
+    },
+    "hbd_count": {
+      "mean": 0.13411458333333334,
+      "n": 96
+    },
+    "heavy_atom_count": {
+      "mean": 0.014908256880733946,
+      "n": 109
+    },
+    "hetero_atom_count": {
+      "mean": 0.07142857142857142,
+      "n": 91
+    },
+    "heterocycle_count": {
+      "mean": 0.21428571428571427,
+      "n": 56
+    },
+    "hydrogen_atom_count": {
+      "mean": 0.025280898876404494,
+      "n": 89
+    },
+    "longest_carbon_chain_count": {
+      "mean": 0.053763440860215055,
+      "n": 93
+    },
+    "molecular_formula_count": {
+      "mean": 0.0,
+      "n": 103
+    },
+    "murcko_scaffold_count": {
+      "mean": 0.02631578947368421,
+      "n": 76
+    },
+    "ring_count": {
+      "mean": 0.125,
+      "n": 68
+    },
+    "rotatable_bond_count": {
+      "mean": 0.08433734939759036,
+      "n": 83
+    },
+    "saturated_ring_count": {
+      "mean": 0.19642857142857142,
+      "n": 63
+    },
+    "smallest_largest_ring_size_largest_count": {
+      "mean": 0.005319148936170213,
+      "n": 47
+    },
+    "smallest_largest_ring_size_smallest_count": {
+      "mean": 0.020833333333333332,
+      "n": 36
+    },
+    "stereocenter_count": {
+      "mean": 0.11315789473684211,
+      "n": 95
+    },
+    "stereochemistry_unspecified_double_bond_count": {
+      "mean": 0.11413043478260869,
+      "n": 69
+    },
+    "unspecified_stereocenter_count": {
+      "mean": 0.07244318181818182,
+      "n": 88
+    }
+  },
+  "answer_size_ratio_by_property": {}
+}

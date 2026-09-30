@@ -1,0 +1,25 @@
+# Report for the extension's 1.5B models.
+#   python -m miqgrpo.report --spec extension/configs/report-1.5b.yaml --out $MIQ_RESULTS/report-extension/1.5b
+
+baseline: miq-eval-base-1.5b
+baseline_display: Qwen2.5-1.5B-Instruct (base)
+dataset: miq-train
+models:
+  - label: count
+    display: 1.5B SFT + GRPO, count only
+    task_type: count
+    evaluation: miq-eval-count-1.5b
+    training: count-1.5b
+    dev: {split: count_dev, base: base-1.5b-count, model: count-1.5b}
+  - label: index
+    display: 1.5B SFT + GRPO, index only
+    task_type: index
+    evaluation: miq-eval-index-1.5b
+    training: index-1.5b
+    dev: {split: index_dev, base: base-1.5b-index, model: index-1.5b}
+  - label: constraint_generation
+    display: 1.5B GRPO, constrained generation only
+    task_type: generation
+    evaluation: miq-eval-constraint_generation-1.5b-grpo-only
+    training: constraint_generation-1.5b-grpo-only
+    dev: {split: constraint_generation_dev, base: base-1.5b-constraint_generation, model: constraint_generation-1.5b-grpo-only}

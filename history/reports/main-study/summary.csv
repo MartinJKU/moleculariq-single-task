@@ -1,0 +1,5 @@
+model,evaluation_run_id,pass@1,pass@3,avg accuracy,avg_accuracy:count,avg_accuracy:index,avg_accuracy:generation,delta:overall,delta:overall:ci,delta:count,delta:count:ci,delta:index,delta:index:ci,delta:generation,delta:generation:ci
+Qwen2.5-0.5B-Instruct (base),miq-eval-baseline-r001,0.01996,0.04285,0.02002,0.02778,0.00843,0.02398,,,,,,,,
+"GRPO, count only",miq-eval-count-r001,0.0227,0.05087,0.02348,0.03685,0.01226,0.02058,0.00346,"[0.00052, 0.00639]",0.00907,"[0.00259, 0.01556]",0.00383,"[0.00057, 0.00709]",-0.00339,"[-0.00806, 0.00106]"
+"GRPO, index only",miq-eval-index-r001,0.02074,0.04676,0.021,0.04074,0.00192,0.01952,0.00098,"[-0.00189, 0.00391]",0.01296,"[0.00648, 0.01944]",-0.00651,"[-0.00958, -0.00383]",-0.00446,"[-0.00912, -0.00000]"
+"GRPO, constrained generation only",miq-eval-constraint_generation-r001,0.02915,0.04794,0.02876,0.03648,0.01034,0.04031,0.00874,"[0.00574, 0.01180]",0.0087,"[0.00315, 0.01444]",0.00192,"[-0.00153, 0.00536]",0.01634,"[0.01018, 0.02292]"

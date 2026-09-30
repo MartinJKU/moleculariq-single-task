@@ -1,0 +1,32 @@
+# Supervised warm-up on worked solutions: index attribution, 0.5B.
+#   python -m miqgrpo.train_sft train --config extension/configs/sft/index-0.5b.yaml
+
+experiment:
+  id: sft-index-0.5b
+  task_family: index
+  notes: >-
+    Supervised warm-up on worked solutions, 0.5B.
+
+model:
+  id: Qwen/Qwen2.5-0.5B-Instruct
+  dtype: bfloat16
+
+data:
+  artifact_id: miq-sft
+  split: index
+  expected_hash: 2367614dcda3b5a9f5cb7d7b956d57adb91bdfb9695793545e6478313c4a0dad
+
+sft:
+  learning_rate: 1.0e-5
+  lr_scheduler_type: cosine
+  warmup_ratio: 0.03
+  weight_decay: 0.0
+  num_train_epochs: 2.0
+  per_device_train_batch_size: 16
+  gradient_accumulation_steps: 2
+  max_length: 4096
+  gradient_checkpointing: true
+  bf16: true
+  seed: 42
+  logging_steps: 10
+  save_steps: 500
