@@ -75,7 +75,7 @@ name differs, which is why the hash differs.
 configs/      dataset, the three experiments, benchmark runs, report
 src/miqgrpo/  generation + build_dataset (data), rewards + train_grpo (training),
               evaluate + dev_eval (evaluation), report + analysis + breakdown (report)
-scripts/      the pipeline in running order (+ slurm/)
+scripts/      the pipeline in running order
 tests/        rewards, prompts, data, benchmark isolation, reproducibility
 extension/    supervised warm-up and 1.5B study
 history/      earlier recipes, runs and reports
